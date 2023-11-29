@@ -1,2 +1,37 @@
-anna 30 works
-test-1
+<div class="fullscreen" [@fade]="fadeInStart">
+  <div class="focus">
+    <h1>Regalo per i 30 anni di <span class="old-rose">Anna</span></h1>
+    <img src="/assets/panda.svg">
+    <ng-container *ngIf="!done">
+      <p class="taupe">Dimmi chi sei e quanto pensi di mettere!</p>
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input class="right" matInput placeholder="Anna" [(ngModel)]="name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Importo</mat-label>
+        <mat-icon matIconPrefix>euro</mat-icon>
+        <input class="amount right" matInput placeholder="5" type="number" [(ngModel)]="amount">
+        <span matTextSuffix>.00</span>
+      </mat-form-field>
+      <button mat-flat-button color="primary" class="button" (click)="onClick()">
+        Conferma
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="done">
+      <h2>
+        <mat-icon>favorite</mat-icon>
+        Grazie {{ name }}!
+        <mat-icon>favorite</mat-icon>
+      </h2>
+    </ng-container>
+    <p class="pms">
+      Fin ora abbiamo ricevuto {{ length }} offerte.<br>
+      Per un totale raccolto di {{ total | currency:'EUR' }}.<br>
+      La quota media è stata {{ average | currency:'EUR' }}.<br>
+      La quota record è stata {{ max | currency:'EUR' }}.
+    </p>
+    <p class="disclaimer pms-light">I dati sono trattati in forma anonima e riservata, sotto la responsabilità di Dommi. I colori di questa pagina sono rigorosamente in palette.</p>
+  </div>
+</div>
