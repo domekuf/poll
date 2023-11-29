@@ -1,1 +1,63 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$old-rose-palette: (
+ 50: #B57B78,
+ 100: #B57B78,
+ 200: #B57B78,
+ 300: #B57B78,
+ 400: #B57B78,
+ 500: #B57B78,
+ 600: #B57B78,
+ 700: #B57B78,
+ 800: #B57B78,
+ 900: #B57B78,
+ contrast: (
+  50:  #5DB57B78,
+  100: #5DB57B78,
+  200: #5DB57B78,
+  300: #5DB57B78,
+  400: #5DB57B78,
+  500: #5DB57B78,
+  600: #5DB57B78,
+  700: #5DB57B78,
+  800: #5DB57B78,
+  900: #5DB57B78,
+ )
+);
+$anna-30-primary: mat.define-palette($old-rose-palette);
+$anna-30-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$anna-30-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$anna-30-theme: mat.define-light-theme((
+  color: (
+    primary: $anna-30-primary,
+    accent: $anna-30-accent,
+    warn: $anna-30-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($anna-30-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

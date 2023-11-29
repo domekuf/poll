@@ -1,0 +1,66 @@
+$sand: #DACBB5;
+$rose: #EED4D8;
+$old-rose: #B57B78;
+$taupe: #AD9F94;
+$pms: #5D7F71;
+$pms-light: #8CAA9B;
+
+.fullscreen {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  .focus {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.sand {
+  color: $sand;
+}
+
+.rose {
+  color: $rose;
+}
+
+.old-rose {
+  color: $old-rose;
+}
+
+.taupe {
+  color: $taupe;
+}
+
+.pms {
+  color: $pms;
+}
+
+.pms-light {
+  color: $pms-light;
+}
+
+.right {
+  text-align: right;
+}
+
+input.amount::-webkit-outer-spin-button,
+input.amount::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.amount {
+  -moz-appearance: textfield;
+}
+
+.button {
+  height: 56px;
+  font-size: 17px;
+}
+
+.disclaimer {
+  font-size: small;
+  font-style: italic;
+}
