@@ -1,3 +1,3 @@
 export const environment = {
-  eventDate: new Date(2023, 12, 6)
+  eventDate: new Date(2023, 11, 6)
 };
