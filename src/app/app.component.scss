@@ -1,20 +1,26 @@
 $sand: #DACBB5;
 $rose: #EED4D8;
+$lavender: #D1C3D6;
 $old-rose: #B57B78;
 $taupe: #AD9F94;
 $pms: #5D7F71;
 $pms-light: #8CAA9B;
+$pms-dark: #7F7D89;
 
 .fullscreen {
   display: flex;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   justify-content: center;
   .focus {
-    width: 300px;
+    width: 375px;
     display: flex;
     flex-direction: column;
     text-align: center;
+    #header {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 
@@ -42,6 +48,14 @@ $pms-light: #8CAA9B;
   color: $pms-light;
 }
 
+.pms-dark {
+  color: $pms-dark;
+}
+
+.lavender {
+  color: $lavender;
+}
+
 .right {
   text-align: right;
 }
@@ -61,6 +75,27 @@ input.amount {
 }
 
 .disclaimer {
-  font-size: small;
+  font-size: 18px;
   font-style: italic;
+}
+
+.signature {
+  font-size: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+}
+
+.signature-list {
+  margin-top: 30px;
+}
+
+.instructions {
+  font-size: 25px;
+  line-height: 40px;
+  color: $pms-dark;
 }

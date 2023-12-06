@@ -1,37 +1,96 @@
+
 <div class="fullscreen" [@fade]="fadeInStart">
   <div class="focus">
-    <h1>Regalo per i 30 anni di <span class="old-rose">Anna</span></h1>
-    <img src="/assets/panda.svg">
-    <ng-container *ngIf="!done">
-      <p class="taupe">Dimmi chi sei e quanto pensi di mettere!</p>
-      <mat-form-field appearance="outline">
-        <mat-label>Nome</mat-label>
-        <input class="right" matInput placeholder="Anna" [(ngModel)]="name">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Importo</mat-label>
-        <mat-icon matIconPrefix>euro</mat-icon>
-        <input class="amount right" matInput placeholder="5" type="number" [(ngModel)]="amount">
-        <span matTextSuffix>.00</span>
-      </mat-form-field>
-      <button mat-flat-button color="primary" class="button" (click)="onClick()">
-        Conferma
-        <mat-icon>favorite</mat-icon>
-      </button>
+  <ng-container *ngIf="!started">
+      <h1>Regalo per i 30 anni di <span class="old-rose">Anna</span></h1>
+      <img src="/assets/panda.svg">
+      <ng-container *ngIf="!done">
+        <p class="taupe">Dimmi chi sei e quanto pensi di mettere!</p>
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input class="right" matInput placeholder="Anna" [(ngModel)]="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Importo</mat-label>
+          <mat-icon matIconPrefix>euro</mat-icon>
+          <input class="amount right" matInput placeholder="5" type="number" [(ngModel)]="amount">
+          <span matTextSuffix>.00</span>
+        </mat-form-field>
+        <button mat-flat-button color="primary" class="button" (click)="onClick()">
+          Conferma
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </ng-container>
+      <ng-container *ngIf="done">
+        <h2>
+          <mat-icon>favorite</mat-icon>
+          Grazie {{ name }}!
+          <mat-icon>favorite</mat-icon>
+        </h2>
+      </ng-container>
+      <p class="pms">
+        Fin ora abbiamo ricevuto {{ length }} offerte.<br>
+        Per un totale raccolto di {{ total | currency:'EUR' }}.<br>
+        La quota media è stata {{ average | currency:'EUR' }}.<br>
+        La quota record è stata {{ max | currency:'EUR' }}.
+      </p>
+      <p class="disclaimer pms-light">I dati sono trattati in forma anonima e riservata, sotto la responsabilità di Dommi. I colori di questa pagina sono rigorosamente in palette.</p>
     </ng-container>
-    <ng-container *ngIf="done">
-      <h2>
-        <mat-icon>favorite</mat-icon>
-        Grazie {{ name }}!
-        <mat-icon>favorite</mat-icon>
-      </h2>
+    <ng-container *ngIf="started" [@fade]="fadeInStart">
+      <div id="header">
+        <h1>30 <span class="pms-dark">anni</span> di <span class="old-rose">Anna</span></h1>
+        <img src="/assets/panda.svg">
+        <h2 class="taupe">E ancora ti devi svegliare 😴</h2>
+      </div>
+      <div *ngIf="page === 0">
+        <div class="buttons">
+          <button mat-mini-fab color="primary" (click)="nextPage()"><mat-icon>arrow_right</mat-icon></button>
+        </div>
+        <p class="disclaimer pms-light">
+          Niente cookies, niente carta, no confezioni 🌿
+        </p>
+      </div>
+      <div *ngIf="page === 1">
+        <div class="buttons">
+          <button mat-mini-fab color="primary" (click)="prevPage()"><mat-icon>arrow_left</mat-icon></button>
+          <button mat-mini-fab color="secondary" (click)="shuffle()"><mat-icon>shuffle</mat-icon></button>
+          <button mat-mini-fab color="primary" (click)="nextPage()"><mat-icon>arrow_right</mat-icon></button>
+        </div>
+        <div class="signature-list">
+          <p *ngFor="let entry of entries; let i = index"
+            class="signature"
+            [ngClass]="getRandomColorClass()"
+            [style.margin-left.px]="getRandomMarginLeft()"
+            [style.margin-top.px]="getRandomMarginTop()">
+            {{ entry.name }}
+          </p>
+        </div>
+      </div>
+      <div *ngIf="page === 2">
+        <div class="buttons">
+          <button mat-mini-fab color="primary" (click)="prevPage()"><mat-icon>arrow_left</mat-icon></button>
+        </div>
+        <p class="instructions">
+          Istruzioni 📝
+          <br>
+          1. Svegliati
+          <br>
+          2. Scopri cos'è una Diamonica
+          <br>
+          3. Puoi chiedere aiuto
+          <br>
+          4. Scopri che ne abbiamo una
+          <br>
+          5. Trova la custodia
+          <br>
+          6. Aprila
+          <br>
+          7. Non arrabbiarti
+          <br>
+          8. Buon compleanno
+          🫶
+        </p>
+      </div>
     </ng-container>
-    <p class="pms">
-      Fin ora abbiamo ricevuto {{ length }} offerte.<br>
-      Per un totale raccolto di {{ total | currency:'EUR' }}.<br>
-      La quota media è stata {{ average | currency:'EUR' }}.<br>
-      La quota record è stata {{ max | currency:'EUR' }}.
-    </p>
-    <p class="disclaimer pms-light">I dati sono trattati in forma anonima e riservata, sotto la responsabilità di Dommi. I colori di questa pagina sono rigorosamente in palette.</p>
   </div>
 </div>

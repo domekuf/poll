@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Entry } from './entry';
 import { FirestoreService } from './firestore.service';
 
@@ -20,6 +21,15 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   title = 'anna-30';
   public fadeInStart = false;
   public done = false;
+  public page = 0;
+  public nextPage() {
+    this.page ++;
+  }
+
+  public prevPage() {
+    this.page --;
+  }
+
   ngAfterViewInit() {
     this.fadeInStart = true;
   }
@@ -43,8 +53,13 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       this.done = true;
     })
   }
-  constructor(private firestore: FirestoreService) {
-    this.entriesSub = this.firestore.getEntries().subscribe(e => this.entries = e);
+  constructor(
+    private firestore: FirestoreService,
+    ) {
+    this.entriesSub = this.firestore.getEntries().subscribe(e => {
+      this.entries = e;
+      this.shuffle();
+    });
   }
   get length(): number {
     return this.entries.length;
@@ -66,4 +81,26 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       this.entriesSub.unsubscribe();
     }
   }
+  get started(): boolean {
+    return new Date().getTime() > environment.eventDate.getTime();
+  }
+  colors = ["pms-dark", "old-rose", "taupe", "pms", "pms-light"];
+
+  getRandomColorClass(): string {
+    const randomColorIndex = Math.floor(Math.random() * this.colors.length);
+    return this.colors[randomColorIndex];
+  }
+
+  getRandomMarginLeft(): number {
+    return Math.random() * 375 - 190;
+  }
+
+  getRandomMarginTop(): number {
+    return Math.random() * -20;
+  }
+
+  shuffle() {
+    this.entries.sort(() => Math.random() - 0.5);
+  }
+
 }
