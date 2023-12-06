@@ -12,60 +12,103 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$old-rose-palette: (
- 50: #B57B78,
- 100: #B57B78,
- 200: #B57B78,
- 300: #B57B78,
- 400: #B57B78,
- 500: #B57B78,
- 600: #B57B78,
- 700: #B57B78,
- 800: #B57B78,
- 900: #B57B78,
- contrast: (
-  50:  #5DB57B78,
-  100: #5DB57B78,
-  200: #5DB57B78,
-  300: #5DB57B78,
-  400: #5DB57B78,
-  500: #5DB57B78,
-  600: #5DB57B78,
-  700: #5DB57B78,
-  800: #5DB57B78,
-  900: #5DB57B78,
- )
+
+$primary-day-palette: (
+  50: #E2EEF1,
+  100: #B6D6DC,
+  200: #89BEC3,
+  300: #5CA6AA,
+  400: #308E91,
+  500: #035C67,
+  600: #025257,
+  700: #013847,
+  800: #002036,
+  900: #000D26,
+  contrast: (
+    50:  #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #FFFFFF,
+    600: #FFFFFF,
+    700: #FFFFFF,
+    800: #FFFFFF,
+    900: #FFFFFF,
+  )
 );
 
-$primary-color: #6B8D74;
-$accent-color-1: #8CAA9B;
-$background-color: #DACBB5;
-$accent-color-2: #B57B78;
-$accent-color-3: #8B9DAC;
-$accent-color-4: #EED4D8;
 
-$anna-30-primary: mat.define-palette($old-rose-palette);
-$anna-30-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$primary-night-palette: (
+  50: #214347,
+  100: #3D5A56,
+  200: #576E65,
+  300: #718276,
+  400: #8B967F,
+  500: #AFAF88,
+  600: #C2C298,
+  700: #D6D6A7,
+  800: #E9E9B7,
+  900: #FCFCC6,
+  contrast: (
+    50:  #FFFFFF,
+    100: #FFFFFF,
+    200: #FFFFFF,
+    300: #FFFFFF,
+    400: #FFFFFF,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+  )
+);
 
-// The warn palette is optional (defaults to red).
-$anna-30-warn: mat.define-palette(mat.$red-palette);
+$accent-palette: (
+  50: #FCE4EC,
+  100: #F8B9C8,
+  200: #F48EA5,
+  300: #F06481,
+  400: #EC395E,
+  500: #FA7598,
+  600: #BF0830,
+  700: #960625,
+  800: #6D041B,
+  900: #440310,
+  contrast: (
+    50:  #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #FFFFFF,
+    600: #FFFFFF,
+    700: #FFFFFF,
+    800: #FFFFFF,
+    900: #FFFFFF,
+  )
+);
+
+$ginginbell-primary: mat.define-palette($primary-day-palette);
+$ginginbell-accent: mat.define-palette($accent-palette);
+$ginginbell-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$anna-30-theme: mat.define-light-theme((
+$ginginbell-theme: mat.define-light-theme((
   color: (
-    primary: $anna-30-primary,
-    accent: $anna-30-accent,
-    warn: $anna-30-warn,
+    primary: $ginginbell-primary,
+    accent: $ginginbell-accent,
+    warn: $ginginbell-warn,
   )
 ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($anna-30-theme);
+@include mat.all-component-themes($ginginbell-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Dancing Script' }
+body { margin: 0; font-family: 'Montserrat Alternates' }

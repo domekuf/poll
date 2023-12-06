@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    provideFirebaseApp(() => initializeApp({"projectId":"anna-30","appId":"1:292477778408:web:7fe23280341abbf9354c5d","storageBucket":"anna-30.appspot.com","apiKey":"AIzaSyBVAjQ80L8usJFCDK_GpE_W02zzwoJsoo4","authDomain":"anna-30.firebaseapp.com","messagingSenderId":"292477778408","measurementId":"G-9KKP5RG1BK"})),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
   ],
   providers: [provideAnimations()],

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "anna-30": {
+    "ginginbell": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/anna-30",
+            "outputPath": "dist/ginginbell",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -44,8 +44,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "200kb",
+                  "maximumError": "400kb"
                 }
               ],
               "outputHashing": "all"
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "anna-30:build:production"
+              "browserTarget": "ginginbell:build:production"
             },
             "development": {
-              "browserTarget": "anna-30:build:development"
+              "browserTarget": "ginginbell:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "anna-30:build"
+            "browserTarget": "ginginbell:build"
           }
         },
         "test": {
@@ -108,7 +108,7 @@
           "builder": "@angular/fire:deploy",
           "options": {
             "version": 2,
-            "browserTarget": "anna-30:build:production"
+            "browserTarget": "ginginbell:build:production"
           }
         }
       }

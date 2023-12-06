@@ -1,14 +1,5 @@
 {
   "projects": {
-    "default": "anna-30"
-  },
-  "targets": {
-    "anna-30": {
-      "hosting": {
-        "anna-30": [
-          "anna-30"
-        ]
-      }
-    }
+    "default": "bell-407310"
   }
 }

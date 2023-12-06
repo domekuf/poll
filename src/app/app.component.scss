@@ -1,101 +1,58 @@
-$sand: #DACBB5;
-$rose: #EED4D8;
-$lavender: #D1C3D6;
-$old-rose: #B57B78;
-$taupe: #AD9F94;
-$pms: #5D7F71;
-$pms-light: #8CAA9B;
-$pms-dark: #7F7D89;
+@use '../styles.scss' as g;
+
+$mobile-breakpoint: 768px;
 
 .fullscreen {
-  display: flex;
+  p {
+    line-height: 200%;
+  }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  grid-template-areas: 
+    "focus cover";
   min-height: 100%;
   width: 100%;
-  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  background: map-get(g.$ginginbell-primary, 50);
+
+  @media (max-width: $mobile-breakpoint) {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "cover"
+      "focus";
+    .cover {
+      width: 380px!important;
+    }
+  }
+  .cover {
+    grid-area: cover;
+    width: 550px;
+  }
   .focus {
-    width: 375px;
+    grid-area: focus;
+    width: 320px;
     display: flex;
     flex-direction: column;
     text-align: center;
-    #header {
-      display: flex;
-      flex-direction: column;
+    .disclaimer {
+      color: map-get(g.$ginginbell-primary, 300);
+      font-size: 80%;
     }
   }
 }
 
-.sand {
-  color: $sand;
-}
-
-.rose {
-  color: $rose;
-}
-
-.old-rose {
-  color: $old-rose;
-}
-
-.taupe {
-  color: $taupe;
-}
-
-.pms {
-  color: $pms;
-}
-
-.pms-light {
-  color: $pms-light;
-}
-
-.pms-dark {
-  color: $pms-dark;
-}
-
-.lavender {
-  color: $lavender;
-}
-
-.right {
-  text-align: right;
-}
-
-input.amount::-webkit-outer-spin-button,
-input.amount::-webkit-inner-spin-button {
-  display: none;
-}
-
-input.amount {
-  -moz-appearance: textfield;
-}
-
 .button {
-  height: 56px;
+  height: 56px!important;
   font-size: 17px;
+  font-family: 'Montserrat Alternates';
 }
 
-.disclaimer {
-  font-size: 18px;
-  font-style: italic;
+a {
+  color: map-get(g.$ginginbell-accent, 500);
 }
 
-.signature {
-  font-size: 20px;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 15px;
-}
-
-.signature-list {
-  margin-top: 30px;
-}
-
-.instructions {
-  font-size: 25px;
-  line-height: 40px;
-  color: $pms-dark;
+.button-container {
+  margin-bottom: 40px;
 }

@@ -25,7 +25,7 @@ export class FirestoreService {
   addEntry(entry: Entry, cb: { (): void; (): void; }) {
     const sub = this.entries.subscribe(entries => {
       if (entries.find(e => e.name === entry.name)) {
-        alert(`Scusa ${entry.name} ma qualcuno ha già usato questo nome! 🙁`);
+        alert(`Scusa ${entry.name} ma qualcuno ha già usato questo nome! 🙁 Scegline un altro!`);
         sub.unsubscribe();
       } else {
         alert(`Grazie ${entry.name}! ❤️`);
