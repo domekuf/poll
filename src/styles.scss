@@ -95,7 +95,7 @@ $ginginbell-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$ginginbell-theme: mat.define-light-theme((
+$ginginbell-theme: mat.define-dark-theme((
   color: (
     primary: $ginginbell-primary,
     accent: $ginginbell-accent,
@@ -111,4 +111,4 @@ $ginginbell-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Montserrat Alternates' }
+body { margin: 0; font-family: 'Fira Sans' }

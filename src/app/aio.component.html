@@ -1,43 +1,50 @@
 <div class="fullscreen" [@fade]="fadeInStart">
-  <img class="cover" src="/assets/cover.png" class="cover">
   <div class="focus">
     <ng-container *ngIf="!started">
       <ng-container *ngIf="!done">
-        <p>
-          Camminata riscaldante di Natale
+        <ng-container *ngIf="event as e">
+        <h1>{{e.name}}</h1>
+        <h2>
+          {{e.distance}}
           <br>
-          A seguire Caffè OFFERTO
-        </p>
-        <p>
-          <b>Quando: </b> 23 Dicembre 2023, ore 9.30
-          <b>Dove: </b>
-          Partenza e Arrivo <a href="https://bargiardinofaenza.it/" target="_blank">Bar Giardino</a>
-          <br>
-          <a href="https://maps.app.goo.gl/t6XQ7E9MqZqzH3Ns5">Faenza, Viale Vittorio Veneto, 5</a>
-          <br>
-          <b>Perchè: </b>
-          L'iscrizione ci serve solo per contarci, lasciaci un nome e se vuoi un contatto
-          (email ✉️, telefono 📞, account instagram 📷)
-          <br>
-          <b>
-            Iscrizioni entro {{ eventDate | date }}
-          </b>
-        </p>
-        <mat-form-field appearance="outline">
+          {{e.distanceAlt}}
+        </h2>
+          <p>
+            {{e.description}}
+            <br>
+            {{e.reward}}
+            <br>
+            <b>Quando: </b> {{ e.date | date: 'dd/MM/yyyy ore HH:mm' : 'it' }}
+            <br>
+            <b>Dove: </b>
+            Partenza e Arrivo <a href="https://bargiardinofaenza.it/" target="_blank">{{ e.place }}</a>
+            <br>
+            <a href="{{e.placeLink}}">{{e.placeAddress}}</a>
+            <br>
+            <b>Perchè: </b>
+            L'iscrizione ci serve solo per contarci, lasciaci un nome e se vuoi un contatto
+            (email ✉️, telefono 📞, account instagram 📷)
+            <br>
+            <b>
+              Iscrizioni entro {{e.subscriptionBy | date: 'dd/MM/yyyy'}}
+            </b>
+          </p>
+        </ng-container>
+        <mat-form-field appearance="outline" color="accent">
           <mat-label>Nome e Cognome</mat-label>
           <input class="right" matInput placeholder="Luca Rossi" [(ngModel)]="name">
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" color="accent">
           <mat-label>Contatto</mat-label>
           <input class="right" matInput placeholder="@ginepro.asd" type="" [(ngModel)]="contact">
         </mat-form-field>
-        <button mat-flat-button color="primary" class="button" (click)="onClick()">
+        <button mat-flat-button color="accent" class="button" (click)="onClick()">
           Conferma
           <mat-icon>favorite</mat-icon>
         </button>
       </ng-container>
       <ng-container *ngIf="done">
-        <button mat-flat-button color="primary" class="button" (click)="newOne()">
+        <button mat-flat-button color="accent" class="button" (click)="newOne()">
           Iscrivi un altro
         </button>
       </ng-container>

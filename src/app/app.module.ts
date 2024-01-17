@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { AppComponent } from './app.component';
+import { AioComponent } from './aio.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AioComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +27,6 @@ import { environment } from 'src/environments/environment';
     provideFirestore(() => getFirestore()),
   ],
   providers: [provideAnimations()],
-  bootstrap: [AppComponent]
+  bootstrap: [AioComponent]
 })
 export class AppModule { }
