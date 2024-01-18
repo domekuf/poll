@@ -1,7 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { map, Observable, Subject, Subscription, takeUntil } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { Subject, takeUntil } from 'rxjs';
 import { Entry } from './entry';
 import { FirestoreService, GinEvent } from './firestore.service';
 
@@ -28,8 +27,10 @@ export class AioComponent implements OnInit, OnDestroy {
   }
   entries: Entry[] = [];
   event?: GinEvent;
-  name?: string;
   contact?: string;
+  name?: string;
+  food?: string;
+  postEvent?: boolean;
   newOne() {
     this.done = false;
   }
@@ -39,13 +40,16 @@ export class AioComponent implements OnInit, OnDestroy {
       return;
     }
     this.firestore.addEntry({
+      contact: this.contact ?? '',
+      food: this.food ?? '',
       name: this.name,
-      contact: this.contact ?? ''
+      postEvent: this.postEvent ?? false,
     }, () => {
       this.done = true;
     })
   }
 
+  public loaded = false;
   constructor(
     private firestore: FirestoreService,
     ) {
@@ -59,6 +63,7 @@ export class AioComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy))
       .subscribe(e => {
         this.event = e;
+        this.loaded = true;
       });
   }
   get length(): number {

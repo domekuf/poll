@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right
+}
+
+.name {
+  font-size: 110%;
+  font-weight: bold;
+}
+
+.focus {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

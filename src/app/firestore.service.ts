@@ -12,7 +12,8 @@ interface CommonEvent {
   place: string,
   placeAddress: string,
   placeLink: string,
-  reward: string,
+  postEventName: string,
+  postEventCost: number,
 }
 
 interface FirestoreEvent extends CommonEvent {

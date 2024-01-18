@@ -1,50 +1,5 @@
 @use '../styles.scss' as g;
 
-$mobile-breakpoint: 768px;
-
-.fullscreen {
-  p {
-    line-height: 200%;
-    color: white;
-  }
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
-  grid-template-areas: 
-    "focus cover";
-  min-height: 100%;
-  width: 100%;
-  justify-items: center;
-  align-items: center;
-  background: url('../assets/aio.png');
-  background-position: top;
-
-  @media (max-width: $mobile-breakpoint) {
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-      "cover"
-      "focus";
-    .cover {
-      width: 380px!important;
-    }
-  }
-  .cover {
-    grid-area: cover;
-    width: 550px;
-  }
-  .focus {
-    grid-area: focus;
-    width: 320px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    .disclaimer {
-      color: map-get(g.$ginginbell-primary, 300);
-      font-size: 80%;
-    }
-  }
-}
-
 .button {
   height: 56px!important;
   font-size: 17px;
@@ -64,4 +19,23 @@ h1, h2{
 }
 h2 {
   color: white
+}
+
+.mb-1 {
+  margin-bottom: 20px;
+}
+
+.disclaimer {
+  color: map-get(g.$ginginbell-primary, 300);
+  font-size: 80%;
+}
+
+p {
+  line-height: 200%;
+}
+
+.focus {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }

@@ -89,7 +89,7 @@ $accent-palette: (
   )
 );
 
-$ginginbell-primary: mat.define-palette($primary-day-palette);
+$ginginbell-primary: mat.define-palette($primary-night-palette);
 $ginginbell-accent: mat.define-palette($accent-palette);
 $ginginbell-warn: mat.define-palette(mat.$red-palette);
 

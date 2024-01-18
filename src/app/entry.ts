@@ -1,4 +1,6 @@
 export interface Entry {
-  name: string,
   contact: string,
+  food: string,
+  name: string,
+  postEvent: boolean,
 }

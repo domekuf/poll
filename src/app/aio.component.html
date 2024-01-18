@@ -1,35 +1,34 @@
-<div class="fullscreen" [@fade]="fadeInStart">
-  <div class="focus">
-    <ng-container *ngIf="!started">
-      <ng-container *ngIf="!done">
-        <ng-container *ngIf="event as e">
-        <h1>{{e.name}}</h1>
-        <h2>
-          {{e.distance}}
+<div class="focus">
+  <ng-container *ngIf="!started">
+    <ng-container *ngIf="!done">
+      <ng-container *ngIf="event">
+      <h1>{{event.name}}</h1>
+      <h2>
+        {{event.distance}}
+        <br>
+        {{event.distanceAlt}}
+      </h2>
+        <p>
+          {{event.description}}
           <br>
-          {{e.distanceAlt}}
-        </h2>
-          <p>
-            {{e.description}}
-            <br>
-            {{e.reward}}
-            <br>
-            <b>Quando: </b> {{ e.date | date: 'dd/MM/yyyy ore HH:mm' : 'it' }}
-            <br>
-            <b>Dove: </b>
-            Partenza e Arrivo <a href="https://bargiardinofaenza.it/" target="_blank">{{ e.place }}</a>
-            <br>
-            <a href="{{e.placeLink}}">{{e.placeAddress}}</a>
-            <br>
-            <b>Perchè: </b>
-            L'iscrizione ci serve solo per contarci, lasciaci un nome e se vuoi un contatto
-            (email ✉️, telefono 📞, account instagram 📷)
-            <br>
-            <b>
-              Iscrizioni entro {{e.subscriptionBy | date: 'dd/MM/yyyy'}}
-            </b>
-          </p>
-        </ng-container>
+          A seguire {{event.postEventName}} con contributo di {{event.postEventCost | currency:'EUR'}}
+          <br>
+          <b>Quando: </b> {{ event.date | date: 'dd/MM/yyyy ore HH:mm' : 'it' }}
+          <br>
+          <b>Dove: </b>
+          Partenza e Arrivo <a href="{{event.placeLink}}" target="_blank">{{ event.place }}</a>
+          <br>
+          <b>Indirizzo: </b>
+          <a target="_blank" href="{{event.placeLink}}">{{event.placeAddress}}</a>
+          <br>
+          <b>Perchè: </b>
+          L'iscrizione ci serve solo per contarci, lasciaci un nome e se vuoi un contatto
+          (email ✉️, telefono 📞, account instagram 📷)
+          <br>
+          <b>
+            Iscrizioni entro {{event.subscriptionBy | date: 'dd/MM/yyyy'}}
+          </b>
+        </p>
         <mat-form-field appearance="outline" color="accent">
           <mat-label>Nome e Cognome</mat-label>
           <input class="right" matInput placeholder="Luca Rossi" [(ngModel)]="name">
@@ -38,43 +37,50 @@
           <mat-label>Contatto</mat-label>
           <input class="right" matInput placeholder="@ginepro.asd" type="" [(ngModel)]="contact">
         </mat-form-field>
+        <mat-checkbox class="mb-1" [(ngModel)]="postEvent" color="accent">
+            Parteciperò al {{event.postEventName}}
+        </mat-checkbox>
+        <mat-form-field appearance="outline" color="accent" *ngIf="postEvent">
+          <mat-label>Esigenze alimentari</mat-label>
+          <input class="right" matInput placeholder="Solo bacche di ginepro" type="" [(ngModel)]="food">
+        </mat-form-field>
         <button mat-flat-button color="accent" class="button" (click)="onClick()">
           Conferma
           <mat-icon>favorite</mat-icon>
         </button>
       </ng-container>
-      <ng-container *ngIf="done">
-        <button mat-flat-button color="accent" class="button" (click)="newOne()">
-          Iscrivi un altro
-        </button>
-      </ng-container>
-      <ng-container *ngIf="done">
-        <h2>
-          <mat-icon>favorite</mat-icon>
-          Grazie {{ name }}!
-          <mat-icon>favorite</mat-icon>
-        </h2>
-      </ng-container>
-      <p>
-        Per ora siamo {{ length }}, ma c'è tempo per crescere 💪
-      </p>
-      <p class="disclaimer">🤫 I dati sono trattati in forma anonima e riservata, useremo il contatto solo per comunicazioni necessarie e urgenti.</p>
     </ng-container>
-    <ng-container *ngIf="started" [@fade]="fadeInStart">
-      <h1>Iscrizioni chiuse</h1>
+    <ng-container *ngIf="done">
+      <button mat-flat-button color="accent" class="button" (click)="newOne()">
+        Iscrivi un altro
+      </button>
+    </ng-container>
+    <ng-container *ngIf="done">
       <h2>
-        Ecco i partecipanti:
+        <mat-icon>favorite</mat-icon>
+        Grazie {{ name }}!
+        <mat-icon>favorite</mat-icon>
       </h2>
-      <div class="button-container">
-        <button mat-mini-fab color="secondary" (click)="shuffle()"><mat-icon>shuffle</mat-icon></button>
-      </div>
-      <p *ngFor="let entry of entries; let i = index"
-        class="signature"
-        [ngClass]="getRandomColorClass()"
-        [style.margin-left.px]="getRandomMarginLeft()"
-        [style.margin-top.px]="getRandomMarginTop()">
-        {{ entry.name }} ({{ entry.contact }})
-      </p>
     </ng-container>
-  </div>
+    <p>
+      Per ora siamo {{ length }}, ma c'è tempo per crescere 💪
+    </p>
+    <p class="disclaimer">🤫 I dati sono trattati in forma anonima e riservata, useremo il contatto solo per comunicazioni necessarie e urgenti.</p>
+  </ng-container>
+  <ng-container *ngIf="started && loaded" [@fade]="fadeInStart">
+    <h1>Iscrizioni chiuse</h1>
+    <h2>
+      Ecco i partecipanti:
+    </h2>
+    <div class="button-container">
+      <button mat-mini-fab color="secondary" (click)="shuffle()"><mat-icon>shuffle</mat-icon></button>
+    </div>
+    <p *ngFor="let entry of entries; let i = index"
+      class="signature"
+      [ngClass]="getRandomColorClass()"
+      [style.margin-left.px]="getRandomMarginLeft()"
+      [style.margin-top.px]="getRandomMarginTop()">
+      {{ entry.name }} ({{ entry.contact }})
+    </p>
+  </ng-container>
 </div>
