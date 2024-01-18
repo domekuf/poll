@@ -4,7 +4,6 @@ import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-br
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -33,7 +32,6 @@ import { AdminComponent } from './admin/admin.component';
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatSortModule,
     MatTableModule,
     MatIconModule,
     MatInputModule,

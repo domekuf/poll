@@ -8,25 +8,23 @@
   <ng-container *ngIf="passwordGiven">
     <ng-container *ngIf="(entries | async) as dataSource">
       <ng-container *ngIf="(event | async) as event">
-        <p class="left name">
-          Iscritti {{event.name}}: {{dataSource.length}}
-        </p>
-        <p class="left name">
-          Iscritti {{event.postEventName}}: {{countPostEvent(dataSource)}}
-        </p>
-        <table mat-table [dataSource]="dataSource" matSort
+        <table mat-table [dataSource]="dataSource"
                class="mat-elevation-z8">
-
           <ng-container matColumnDef="main">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordina per nome">
-              Ordina per nome
+            <th mat-header-cell *matHeaderCellDef>
+              <p class="left name">
+                Iscritti {{event.name}}: {{dataSource.length}}
+              </p>
+              <p class="left name">
+                Iscritti {{event.postEventName}}: {{countPostEvent(dataSource)}}
+              </p>
             </th>
             <td mat-cell *matCellDef="let entry">
               <p class="left name">
                 {{entry.name}} ({{entry.contact}})
               </p>
-              <p class="right">
-              {{event.postEventName}}: {{entry.postEvent?'sì':'no'}}
+              <p class="right" *ngIf="entry.postEvent">
+              {{event.postEventName}}
               </p>
               <p class="right" *ngIf="entry.food != ''">
                 {{entry.food}}
