@@ -16,15 +16,6 @@ $mobile-breakpoint: 768px;
   background-position: top;
   background-size: cover;
   color: white;
-  .maxi {
-    width: 200%;
-    margin-left: -60%;
-  }
-  .mini {
-    width: 30%;
-    filter: grayscale(100%);
-  }
-
   @media (max-width: $mobile-breakpoint) {
     grid-template-columns: 1fr;
     grid-template-areas: 
@@ -39,6 +30,14 @@ $mobile-breakpoint: 768px;
     grid-area: cover;
     width: 350px;
     text-align: center;
+    .maxi {
+      width: 200%;
+      margin-left: -60%;
+    }
+    .mini {
+      width: 30%;
+    }
+
   }
   .focus {
     grid-area: focus;
